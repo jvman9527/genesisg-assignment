@@ -1,5 +1,6 @@
 package com.genesisg.ass.ignment
 
+import com.genesisg.ass.ignment.util.LoadedDice
 import spock.lang.Specification
 
 /**
@@ -25,6 +26,22 @@ class ProblemSpec extends Specification {
 
         then:
         1 * solution.roll()
+    }
+
+    def "The dice roll problem will be resolved if dice roll solution generate the same number, otherwise no."(int x, int y, boolean resolved) {
+        setup:
+        DiceRollProblem problem = new DiceRollProblem(new LoadedDice(x))
+        DiceRollSolution solution = new DiceRollSolution(new LoadedDice(y))
+
+        expect:
+        problem.resolveBy(solution) == resolved
+
+        where:
+        x | y | resolved
+        1 | 1 | true
+        2 | 2 | true
+        3 | 4 | false
+        5 | 6 | false
     }
 
 }

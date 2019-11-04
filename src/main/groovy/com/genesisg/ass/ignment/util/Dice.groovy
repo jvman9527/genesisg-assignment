@@ -1,14 +1,10 @@
 package com.genesisg.ass.ignment.util
 
 /**
- * Dice can simulate rolling numbers from 0 - 5
+ * Dice can rolling numbers
  */
-class Dice {
+interface Dice {
 
-    private random = new Random()
-
-    int roll() {
-        random.nextInt(6)
-    }
+    int roll()
 
 }
