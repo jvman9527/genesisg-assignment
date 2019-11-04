@@ -12,6 +12,16 @@ interface Problem {
     boolean resolveBy(Solution solution)
 
     /**
+     * set the problem resolver
+     */
+    void setResolver(Employee employee)
+
+    /**
+     * @return the problem resolver if it resolved, otherwise null
+     */
+    Employee getResolver()
+
+    /**
      * @return is this problem resolved
      */
     boolean isResolved()

@@ -10,6 +10,11 @@ abstract class BaseProblem implements Problem {
      */
     protected resolved = false
 
+    /**
+     * the Employee who resolve the problem
+     */
+    Employee resolver
+
     abstract boolean resolveBy(Solution solution)
 
     @Override

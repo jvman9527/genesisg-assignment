@@ -1,6 +1,7 @@
 package com.genesisg.ass.ignment
 
 import com.genesisg.ass.ignment.util.Dice
+import com.genesisg.ass.ignment.util.LoadedDice
 import com.genesisg.ass.ignment.util.RealDice
 
 /**
@@ -20,6 +21,14 @@ class DiceRollSolution implements Solution {
 
     int roll() {
         dice.roll()
+    }
+
+    /**
+     * get dice roll solution instance with loaded dice for test usage.
+     * @param loadedNum
+     */
+    static DiceRollSolution withLoadedDice(int loadedNum) {
+        new DiceRollSolution(new LoadedDice(loadedNum))
     }
 
 }

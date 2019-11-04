@@ -1,6 +1,7 @@
 package com.genesisg.ass.ignment
 
 import com.genesisg.ass.ignment.util.Dice
+import com.genesisg.ass.ignment.util.LoadedDice
 import com.genesisg.ass.ignment.util.RealDice
 
 class DiceRollProblem extends BaseProblem {
@@ -22,6 +23,14 @@ class DiceRollProblem extends BaseProblem {
         }
 
         resolved
+    }
+
+    /**
+     * get dice roll problem instance with loaded dice for test usage.
+     * @param loadedNum
+     */
+    static DiceRollProblem withLoadedDice(int loadedNum) {
+        new DiceRollProblem(new LoadedDice(loadedNum))
     }
 
 }
