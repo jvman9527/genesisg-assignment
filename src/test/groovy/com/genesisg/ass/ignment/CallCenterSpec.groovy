@@ -1,5 +1,6 @@
 package com.genesisg.ass.ignment
 
+import com.genesisg.ass.ignment.employee.Employee
 import spock.lang.Specification
 
 import static java.util.concurrent.TimeUnit.*

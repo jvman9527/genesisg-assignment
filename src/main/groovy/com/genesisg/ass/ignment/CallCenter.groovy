@@ -1,5 +1,6 @@
 package com.genesisg.ass.ignment
 
+import com.genesisg.ass.ignment.employee.Employee
 import groovyx.gpars.actor.DefaultActor
 
 class CallCenter extends DefaultActor {

@@ -1,5 +1,7 @@
 package com.genesisg.ass.ignment
 
+import com.genesisg.ass.ignment.employee.Employee
+
 /**
  * Default problem support
  */
