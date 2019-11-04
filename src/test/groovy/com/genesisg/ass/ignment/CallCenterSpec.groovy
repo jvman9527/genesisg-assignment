@@ -32,11 +32,18 @@ class CallCenterSpec extends Specification {
             problem: DiceRollProblem.withLoadedDice(1)
         )
 
+        def customer2 = new Customer(
+            name: "Customer2",
+            problem: DiceRollProblem.withLoadedDice(1)
+        )
+
         when:
         callCenter
             .hire(andyRoddick)
             .onCall()
-            .sendAndWait(new Call(customer: customer), 1, SECONDS)
+            .send(new Call(customer: customer))
+
+        callCenter.sendAndWait(new Call(customer: customer2), 1, SECONDS)
 
         then:
         assert customer.problem.resolved
@@ -103,6 +110,101 @@ class CallCenterSpec extends Specification {
         then:
         assert customer.problem.resolved
         assert customer.problem.resolver.name == "RogerFederer"
+    }
+
+    def "An employee default is free"() {
+        expect:
+        new Employee().free
+    }
+
+    def "An incoming telephone call must be allocated to a employee who is free"() {
+        given:
+        def busyEmployee = new Employee(
+            name: "AndyRoddick",
+            solution: DiceRollSolution.withLoadedDice(1),
+            level: 1,
+            free: false
+        )
+
+        def freeEmployee = new Employee(
+            name: "NovakDjokovic",
+            solution: DiceRollSolution.withLoadedDice(1),
+            level: 1
+        )
+
+        def customer = new Customer(
+            name: "Customer",
+            problem: DiceRollProblem.withLoadedDice(1)
+        )
+
+        when:
+        callCenter
+            .hire(busyEmployee)
+            .hire(freeEmployee)
+            .onCall()
+            .sendAndWait(new Call(customer: customer), 1, SECONDS)
+
+        then:
+        assert customer.problem.resolver.is(freeEmployee)
+        assert customer.problem.resolver.name == "NovakDjokovic"
+    }
+
+    def "when employee done his work, he will become free again"() {
+        given:
+        def andyRoddick = new Employee(
+            name: "AndyRoddick",
+            solution: DiceRollSolution.withLoadedDice(1),
+            level: 1
+        )
+
+        def customer = new Customer(
+            name: "Customer",
+            problem: DiceRollProblem.withLoadedDice(1)
+        )
+
+        when:
+        callCenter
+            .hire(andyRoddick)
+            .onCall()
+            .sendAndWait(new Call(customer: customer), 1, SECONDS)
+
+        then:
+        assert customer.problem.resolved
+        assert andyRoddick.free
+    }
+
+    def "when employee escalate his call to higher level employee, he will become free again"() {
+        given:
+        def andyRoddick = new Employee(
+            name: "AndyRoddick",
+            solution: DiceRollSolution.withLoadedDice(1),
+            level: 1
+        )
+
+        def rogerFederer = new Employee(
+            name: "RogerFederer",
+            solution: DiceRollSolution.withLoadedDice(2),
+            level: 2
+        )
+
+        def customer = new Customer(
+            name: "Customer",
+            problem: DiceRollProblem.withLoadedDice(2)
+        )
+
+        when:
+        callCenter
+            .hire(andyRoddick)
+            .hire(rogerFederer)
+            .onCall()
+            .sendAndWait(new Call(customer: customer), 1, SECONDS)
+
+        then:
+        assert andyRoddick.level == 1
+        assert rogerFederer.level == 2
+        assert customer.problem.resolved
+        assert customer.problem.resolver.is(rogerFederer)
+        assert andyRoddick.free
     }
 
 }

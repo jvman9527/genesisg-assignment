@@ -12,8 +12,10 @@ class CallCenter extends DefaultActor {
                 if (msg instanceof Call) {
                     callEmployee(msg.customer)
                 } else if (msg instanceof Escalate) {
+                    msg.from.free = true
                     callEmployee(msg.customer, msg.from.level)
                 } else if (msg instanceof Done) {
+                    msg.customer.problem.resolver.free = true
                     println "${msg.customer.name} resolved by ${msg.customer.problem.resolver.name}"
                 }
             }
@@ -21,9 +23,9 @@ class CallCenter extends DefaultActor {
     }
 
     void callEmployee(Customer customer, int level = 0) {
-        employees
-            .find { it.level > level }
-            .send(customer)
+        def emp = employees.find { it.free && it.level > level }
+        emp.free = false
+        emp << customer
     }
 
     CallCenter hire(Employee employee) {

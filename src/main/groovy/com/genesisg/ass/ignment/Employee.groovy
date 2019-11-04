@@ -8,6 +8,8 @@ class Employee extends DefaultActor {
 
     Solution solution
 
+    boolean free = true
+
     int level
 
     Employee() {
