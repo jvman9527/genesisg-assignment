@@ -46,8 +46,12 @@ class CallCenter extends DefaultActor {
      */
     void callEmployee(Customer customer, int level = 0) {
         def emp = employees.find { it.free && it.level > level }
-        emp.free = false
-        emp << customer
+        if (emp) {
+            emp.free = false
+            emp << customer
+        } else {
+            println "$customer.name very angry because no one can help him."
+        }
     }
 
     /**
