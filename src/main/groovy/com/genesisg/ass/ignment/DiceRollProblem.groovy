@@ -6,6 +6,8 @@ import com.genesisg.ass.ignment.util.RealDice
 
 class DiceRollProblem extends BaseProblem {
 
+    final static int RETRY_SLEEP_TIME_MILLIS = 1000
+
     private int problem
 
     DiceRollProblem() {
@@ -18,8 +20,14 @@ class DiceRollProblem extends BaseProblem {
 
     @Override
     boolean resolveBy(Solution solution) {
-        if (solution instanceof DiceRollSolution) {
-            resolved = (problem == solution.roll())
+        if (solution instanceof AllFreeSolution) {
+            resolved = true
+        } else if (solution instanceof DiceRollSolution) {
+            int retry = 0
+            while (!resolved && (retry++) < solution.retry) {
+                Thread.sleep(new Random().nextInt(RETRY_SLEEP_TIME_MILLIS))
+                resolved = (problem == solution.roll())
+            }
         }
 
         resolved

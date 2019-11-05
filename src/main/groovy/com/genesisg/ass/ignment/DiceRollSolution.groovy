@@ -9,7 +9,12 @@ import com.genesisg.ass.ignment.util.RealDice
  */
 class DiceRollSolution implements Solution {
 
-    private dice
+    private Dice dice
+
+    /**
+     * max retry count, can be set by different employee type
+     */
+    int retry = 1
 
     DiceRollSolution() {
         this(new RealDice())

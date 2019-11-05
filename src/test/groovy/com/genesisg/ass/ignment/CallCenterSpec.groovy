@@ -42,8 +42,8 @@ class CallCenterSpec extends Specification {
         callCenter
             .hire(andyRoddick)
             .onCall()
-            .send(new Call(customer: customer))
 
+        callCenter.sendAndWait(new Call(customer: customer), 1, SECONDS)
         callCenter.sendAndWait(new Call(customer: customer2), 1, SECONDS)
 
         then:
