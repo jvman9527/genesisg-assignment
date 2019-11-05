@@ -27,9 +27,9 @@ class DiceRollProblem extends BaseProblem {
             resolved = true
         } else if (solution instanceof DiceRollSolution) {
             int retry = 0
-            while (!resolved && (retry++) < solution.retry) {
+            while (!(resolved = (problem == solution.roll())) && (retry++) < solution.retry) {
+                // every time you can't solve the problem, you should take a break.
                 Thread.sleep(new Random().nextInt(RETRY_SLEEP_TIME_MILLIS))
-                resolved = (problem == solution.roll())
             }
         }
 
