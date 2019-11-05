@@ -1,4 +1,4 @@
-package com.genesisg.ass.ignment
+package com.genesisg.ass.ignment.customer
 
 import com.genesisg.ass.ignment.customer.Customer
 import com.genesisg.ass.ignment.customer.DiceRollProblem
@@ -21,9 +21,9 @@ class CustomerSpec extends Specification {
         customer.problem.resolveBy(employee.solution) == resolved
 
         where:
-        x | y | resolved
-        1 | 1 | true
-        2 | 3 | false
+        x | y || resolved
+        1 | 1 || true
+        2 | 3 || false
     }
 
 }

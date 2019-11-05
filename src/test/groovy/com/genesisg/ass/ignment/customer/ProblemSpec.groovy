@@ -1,6 +1,5 @@
-package com.genesisg.ass.ignment
+package com.genesisg.ass.ignment.customer
 
-import com.genesisg.ass.ignment.customer.DiceRollProblem
 import com.genesisg.ass.ignment.employee.DiceRollSolution
 import com.genesisg.ass.ignment.util.LoadedDice
 import spock.lang.Specification
