@@ -8,7 +8,9 @@ import com.genesisg.ass.ignment.employee.TechnicalLead
 import groovyx.gpars.actor.DefaultActor
 
 /**
- *
+ * Call center responsible for allocating calls to employee, and control their work status.
+ * It will try to dispatch call to lower level employee first if they are free,
+ * If the employee can not resolve the problem, it escalate the call to the higher level one
  */
 class CallCenter extends DefaultActor {
 
@@ -17,6 +19,9 @@ class CallCenter extends DefaultActor {
      */
     List<Employee> employees = []
 
+    /**
+     * handle the call allocating logic
+     */
     void act() {
         loop {
             react { msg ->
@@ -33,29 +38,45 @@ class CallCenter extends DefaultActor {
         }
     }
 
+    /**
+     * @param customer
+     * @param level - used to find the employee higher then this value
+     */
     void callEmployee(Customer customer, int level = 0) {
         def emp = employees.find { it.free && it.level > level }
         emp.free = false
         emp << customer
     }
 
+    /**
+     * you should hire some employee before you face to the customers
+     * @param employee
+     */
     CallCenter hire(Employee employee) {
         employees << employee
         employees.sort { it.level }
         this
     }
 
+    /**
+     * start operation of this call center
+     * @return
+     */
     CallCenter onCall() {
         start()
         this
     }
 
     /**
-     * simple test
-     * @param args
+     * simple example
+     * 3 freshers
+     * 1 tech lead
+     * 1 project manager
+     * 1 boss
+     *
+     * there's an incoming call every second, and it never stop.
      */
     static void main(args) {
-        // 3 fresher, 1 TL, 1 PM, 1 Boss
         def callCenter = new CallCenter()
             .hire(new Boss("DavidStern"))
             .hire(new ProjectManager("Nadal"))
