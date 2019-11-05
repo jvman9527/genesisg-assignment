@@ -1,4 +1,4 @@
-package com.genesisg.ass.ignment
+package com.genesisg.ass.ignment.customer
 
 import com.genesisg.ass.ignment.employee.AllFreeSolution
 import com.genesisg.ass.ignment.employee.DiceRollSolution

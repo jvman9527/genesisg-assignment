@@ -1,5 +1,7 @@
 package com.genesisg.ass.ignment
 
+import com.genesisg.ass.ignment.customer.Customer
+import com.genesisg.ass.ignment.customer.DiceRollProblem
 import com.genesisg.ass.ignment.employee.Boss
 import com.genesisg.ass.ignment.employee.Employee
 import com.genesisg.ass.ignment.employee.Fresher

@@ -1,4 +1,4 @@
-package com.genesisg.ass.ignment
+package com.genesisg.ass.ignment.customer
 
 class Customer {
 

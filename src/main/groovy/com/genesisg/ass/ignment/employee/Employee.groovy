@@ -1,6 +1,6 @@
 package com.genesisg.ass.ignment.employee
 
-import com.genesisg.ass.ignment.Customer
+import com.genesisg.ass.ignment.customer.Customer
 import com.genesisg.ass.ignment.Done
 import com.genesisg.ass.ignment.Escalate
 import groovyx.gpars.actor.DefaultActor

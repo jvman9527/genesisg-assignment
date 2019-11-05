@@ -1,4 +1,4 @@
-package com.genesisg.ass.ignment
+package com.genesisg.ass.ignment.customer
 
 import com.genesisg.ass.ignment.employee.Employee
 import com.genesisg.ass.ignment.employee.Solution
