@@ -1,7 +1,4 @@
 package com.genesisg.ass.ignment.employee
-
-import com.genesisg.ass.ignment.AllFreeSolution
-
 /**
  * Most powerful guy who can solve any problem and free at anytime
  */

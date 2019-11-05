@@ -1,4 +1,4 @@
-package com.genesisg.ass.ignment
+package com.genesisg.ass.ignment.employee
 
 import com.genesisg.ass.ignment.util.Dice
 import com.genesisg.ass.ignment.util.LoadedDice

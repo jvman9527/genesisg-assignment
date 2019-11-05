@@ -1,7 +1,4 @@
 package com.genesisg.ass.ignment.employee
-
-import com.genesisg.ass.ignment.DiceRollSolution
-
 /**
  * Level 1 employee, provide a dice roll solution with 3 retry limit.
  * If a fresher is unable to solve the caller's problem,

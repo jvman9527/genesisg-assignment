@@ -1,5 +1,8 @@
 package com.genesisg.ass.ignment
 
+import com.genesisg.ass.ignment.employee.AllFreeSolution
+import com.genesisg.ass.ignment.employee.DiceRollSolution
+import com.genesisg.ass.ignment.employee.Solution
 import com.genesisg.ass.ignment.util.Dice
 import com.genesisg.ass.ignment.util.LoadedDice
 import com.genesisg.ass.ignment.util.RealDice

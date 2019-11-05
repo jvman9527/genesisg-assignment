@@ -1,6 +1,7 @@
 package com.genesisg.ass.ignment
 
 import com.genesisg.ass.ignment.employee.Employee
+import com.genesisg.ass.ignment.employee.Solution
 
 /**
  * A Problem may resolve by a solution

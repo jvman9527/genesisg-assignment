@@ -1,7 +1,4 @@
 package com.genesisg.ass.ignment.employee
-
-import com.genesisg.ass.ignment.DiceRollSolution
-
 /**
  * Level 10 employee, provide a dice roll solution with 9 retry limit
  * If the PM can not resolve callers' problem, she must escalate to her boss.
